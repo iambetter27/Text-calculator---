@@ -1,5 +1,7 @@
 I had the idea to create a text calculator.
 So I did one... not really advanced (cause i'm beginner...).
-I'll work on it and update it later when it will have more fuctionalities (power, parentheses...)
+But now I refined my old code and I've now added exponentials and decimals now, which is great!
 
-Also, the input needs no spaces and only these operators: (+, -, *, /)
+I plan to add parentheses, which is my next step.
+
+To interact, work with (+, -, *, /, ^ (for exponential)) 
