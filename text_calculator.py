@@ -1,4 +1,16 @@
+#!/usr/bin/env python3
+
 import time
+
+BOLD = "\033[1m"
+YELLOW = "\033[93m"
+RESET = "\033[0m"
+
+def decimals_error():
+    raise Exception("Sorry, a misstype with the decimals has occured in the equation.")
+
+def typo_error():
+    raise Exception("Sorry, a misstype has occured in the equation")
 
 print("Text Calculator! Operators: \"+, -, *, /, ^\"")
 equation = input("Enter Here: ")
@@ -20,14 +32,15 @@ for j in equation:
             math_phrase.append(j) # Append the operator
             n = []
         else:
-            raise Exception("Sorry, a misstype with the decimals has occured in the equation.")
+            decimals_error()
     # If it is an digit
     elif j.isdigit() :
         n.append(j) 
     # If it is an decimal
     elif j == ".":
         if j in n:
-            raise Exception("Sorry, a misstype with the decimals has occured in the equation.")
+            decimals_error()
+
         else:
             n.append(j)
     # For the useless spaces
@@ -35,7 +48,7 @@ for j in equation:
         continue
     
     else:
-        raise Exception("Sorry, a misstype has occured in the equation.")
+        typo_error()
     
     previous_char = j
 
@@ -44,9 +57,9 @@ if len(n) > 0 and n[-1] != ".":
     math_phrase.append(float("".join(n)))
     del n
 elif len(n) > 0 and n[-1] == ".":
-    raise Exception("Sorry, a misstype with the decimals has occured in the equation.")
+    decimals_error()
 else:
-    raise Exception("Sorry, a misstype has occured in the equation")
+    typo_error()
 
 print(math_phrase)
 
@@ -104,7 +117,7 @@ def EMDAS(math_equation):
         return n
 
     except ZeroDivisionError:
-        raise Exception("Error in calculations (maybe with 0!). Try again!")
+        syntax_error()
 
 def PEMDAS(math_equation):
     count_opening_parentheses = 0
@@ -115,8 +128,9 @@ result = EMDAS(math_phrase)
 if int(result) == result:
     result = int(result)
     
-print("Result: "+str(result))
+print(YELLOW + BOLD + "Result: " +str(result) + RESET)
 
 end = time.time()
 t = end - start
-print(f"Time: {t} seconds")
+
+print(f"Time: {t:.5f} seconds") # only print the time taken with 4 decimal digits
