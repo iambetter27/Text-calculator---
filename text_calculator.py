@@ -133,4 +133,4 @@ print(YELLOW + BOLD + "Result: " +str(result) + RESET)
 end = time.time()
 t = end - start
 
-print(f"Time: {t:.5f} seconds") # only print the time taken with 4 decimal digits
+print(f"Time: {t:.5f} seconds") # only print the time taken with 5 decimal digits
